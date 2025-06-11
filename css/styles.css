@@ -1,0 +1,207 @@
+/* Estilos personalizados para NutriCompare */
+
+/* Colores personalizados */
+:root {
+    --primary-color: #28a745;
+    --secondary-color: #218838;
+    --light-green: #d4edda;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 0; /* Para el navbar fijo */
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    margin-top: -56px;
+    padding-top: 100px !important;
+}
+
+/* Icon circles */
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* Estilos para cards compactas */
+.product-card-compact {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.product-card-compact:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+}
+
+/* Contenedor de imagen */
+.image-wrapper {
+    background-color: #f8f9fa;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    mix-blend-mode: multiply;
+}
+
+.product-card-compact:hover .image-wrapper img {
+    transform: scale(1.05);
+}
+
+/* Textos compactos */
+.product-card-compact .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.3rem;
+}
+
+.product-card-compact .text-muted {
+    font-size: 0.8rem;
+}
+
+/* Botón de favoritos */
+.product-favorite {
+    font-size: 1rem;
+    transition: all 0.2s;
+    padding: 0.25rem !important;
+}
+
+.product-favorite:hover {
+    color: #dc3545 !important;
+}
+
+/* Precio */
+.product-card-compact .h5 {
+    font-size: 1.1rem;
+}
+
+/* Badge de oferta */
+.product-card-compact .badge {
+    font-size: 0.7rem;
+    padding: 0.35em 0.65em;
+}
+
+/* Footer de card */
+.product-card-compact .card-footer {
+    padding-top: 0.5rem;
+    padding-bottom: 0.75rem;
+    font-size: 0.75rem;
+}
+
+/* Estilos para el botón de favoritos */
+.product-favorite {
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+    color: #6c757d;
+}
+
+.product-favorite:hover {
+    transform: scale(1.2);
+    color: #dc3545;
+}
+
+.product-favorite .fa-heart {
+    transition: all 0.2s ease;
+}
+
+.product-favorite:hover .fa-heart {
+    color: #dc3545;
+}
+
+/* Corazón lleno cuando está en favoritos */
+.product-favorite .fas.fa-heart {
+    color: #dc3545;
+}
+
+/* Efecto al agregar/quitar favorito */
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.3); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Animación del corazón */
+.heart-animation {
+    animation: heartBeat 0.5s;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.3); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Estilo para el botón de favoritos */
+.product-favorite {
+    font-size: 1.2rem;
+    transition: all 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.product-favorite:hover {
+    transform: scale(1.2);
+}
+
+.product-favorite .fa-heart {
+    transition: all 0.2s;
+}
+
+/* Estilo para el alert de login */
+#loginAlert {
+    position: sticky;
+    top: 80px;
+    z-index: 1000;
+    animation: fadeIn 0.3s;
+}
+
+
+.product-favorite {
+    transition: all 0.3s ease;
+    border: 1px solid #dc3545 !important; /* Asegura el borde rojo */
+}
+.product-favorite:hover {
+    box-shadow: 0 0 0.4rem rgba(220, 53, 69, 0.4);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 80px !important;
+    }
+    
+    .display-4 {
+        font-size: 2.5rem;
+    }
+}
+
