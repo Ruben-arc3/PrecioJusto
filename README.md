@@ -1,69 +1,64 @@
-PrecioJusto - Plataforma de Comparación de Precios en PHP
-Puedes obeservar el despliegue en "https://preciojusto.free.nf/index.php"
+# PrecioJusto
 
-PrecioJusto es un sistema integral de comparación de precios desarrollado con PHP puro y arquitectura monolítica, diseñado para ayudar a los consumidores a tomar decisiones de compra informadas y optimizar su presupuesto familiar. La plataforma permite comparar precios entre diferentes supermercados, gestionar listas de compra y compartir reseñas de productos.
+PrecioJusto es una aplicación web para consultar y comparar precios de productos ofrecidos por distintas tiendas. Su propósito es ayudar a los consumidores a encontrar opciones económicas y planificar mejor sus compras.
 
-🎯 Objetivo General
-Desarrollar un sistema integral de comparación de precios que permita a los consumidores identificar las mejores opciones de compra mediante el análisis centralizado de información sobre productos, precios y ofertas en diferentes establecimientos comerciales.
+## Funcionalidades disponibles
 
-🏗️ Arquitectura Técnica
-Tecnologías Utilizadas
-PHP 7.4+ (Desarrollo principal)
+- Catálogo de productos con búsqueda, filtros y ordenamiento.
+- Consulta de categorías, ofertas y detalle de cada producto, incluidos precios y tiendas disponibles.
+- Registro, inicio de sesión y edición del perfil de usuario.
+- Productos favoritos para usuarios autenticados.
+- Comentarios y calificaciones de productos.
+- Panel de administración con pantallas para gestionar productos, tiendas y usuarios.
 
-MySQL (Base de datos)
+El documento de requisitos también propone listas de compra, alertas personalizadas y funciones para comercios asociados. Esas capacidades corresponden a objetivos de evolución y no se describen aquí como funciones disponibles en esta versión del código.
 
-HTML5, CSS3, JavaScript (Frontend)
+## Tecnologías
 
-Bootstrap 5 (Framework CSS)
+- PHP 8.1 o posterior
+- MySQL o MariaDB, con la extensión PDO MySQL de PHP
+- HTML5, CSS3 y JavaScript
+- Bootstrap 5 y Font Awesome
+- AJAX para algunas interacciones de la interfaz
 
-jQuery (Interactividad)
+## Requisitos previos
 
-Apache (Servidor web)
+Instala un entorno local como XAMPP, WAMP o equivalente con Apache, PHP y MySQL/MariaDB. Necesitas habilitar `pdo_mysql` en PHP.
 
-Estructura del Proyecto
-text
-preciojusto/
-├── index.php
-├── config/
-│   ├── database.php
-│   └── constants.php
-├── includes/
-│   ├── header.php
-│   ├── footer.php
-│   └── functions.php
-├── modules/
-│   ├── auth/
-│   ├── productos/
-│   ├── comparacion/
-│   ├── listas/
-│   └── administracion/
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── templates/
-└── uploads/
-✨ Características Principales
-Para Usuarios Compradores
-🔍 Búsqueda avanzada de productos por nombre, categoría o marca
+## Instalación local
 
-⚖️ Comparación de precios entre diferentes supermercados
+1. Clona o copia el proyecto dentro del directorio público de Apache, por ejemplo `htdocs/ProyectoDes`.
+2. En MySQL/MariaDB, crea una base de datos llamada `proyecto`.
+3. Importa el archivo [`db/proyecto.sql`](db/proyecto.sql) en esa base de datos desde phpMyAdmin o la consola de MySQL.
+4. Configura la conexión. Por defecto, la aplicación usa `localhost`, la base `proyecto`, el usuario `root` y contraseña vacía. Puedes sobrescribir estos valores con las variables de entorno `DB_HOST`, `DB_NAME`, `DB_USER` y `DB_PASSWORD`.
+5. Inicia Apache y MySQL/MariaDB.
+6. Abre la aplicación en el navegador. Si la carpeta es `ProyectoDes`, la página principal está en `http://localhost/ProyectoDes/app/views/index.php` y el acceso del panel administrativo en `http://localhost/ProyectoDes/app/dashboard/login.php`.
 
-📋 Listas de compra personalizadas con cálculo automático de costos
+> Cambia las credenciales predeterminadas antes de publicar el sistema en un servidor accesible por otras personas.
 
-⭐ Sistema de reseñas y calificaciones de productos
+## Estructura del proyecto
 
-❤️ Favoritos para guardar productos de interés
+```text
+app/
+├── controllers/       # Controladores de páginas, acciones y administración
+├── css/               # Hojas de estilo
+├── img/               # Imágenes de productos
+├── js/                # Scripts del navegador
+├── models/            # Conexión PDO y modelos de datos
+├── dashboard/         # Rutas públicas del panel administrativo
+└── views/
+    └── pages/         # Plantillas de la aplicación y del panel
 
-Para Administradores
-🛠️ Gestión completa de productos, categorías y supermercados
+db/
+└── proyecto.sql       # Esquema y datos iniciales de la base de datos
+```
 
-📊 Actualización masiva de precios y catálogos
+Las rutas PHP existentes en `app/views` y `app/dashboard` mantienen los enlaces de la aplicación y delegan la preparación de datos a controladores. La conexión compartida se configura en `app/models/Database.php`.
 
+## Documentación del proyecto
 
+La especificación académica detalla el problema, los roles de usuario, los requisitos, los casos de uso, el modelo de datos y el plan de pruebas de PrecioJusto. La implementación de este repositorio debe consultarse junto con ese documento para distinguir las funciones desarrolladas de las propuestas para futuras versiones.
 
+## Contexto académico
 
-
-👥 Moderación de reseñas y contenido
-
-📈 Generación de reportes en PDF
+Proyecto del Departamento de Ingeniería de Sistemas de la Universidad de Córdoba, documentado por Rubén Darío Mora Martínez y Juan Eduardo Jattin Ceballos.
