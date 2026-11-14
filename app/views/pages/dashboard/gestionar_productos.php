@@ -25,7 +25,7 @@
                 <tr>
                     <td><?= $producto['id_producto'] ?></td>
                     <td><?= htmlspecialchars($producto['nombre_producto']) ?></td>
-                    <td>$<?= number_format($producto['precio'], 2) ?></td>
+                    <td>$<?= number_format(($producto['precio'] ?? 0), 2) ?></td>
                     <td><?= htmlspecialchars($producto['marca']) ?></td>
                     <td>
                         <a href="editar_producto.php?id=<?= $producto['id_producto'] ?>" class="btn btn-sm btn-primary">Editar</a>

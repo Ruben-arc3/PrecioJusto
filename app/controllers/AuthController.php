@@ -1,5 +1,5 @@
 <?php
-/** Controla inicio de sesión y registro. */
+/** Controla el inicio de sesión y el registro de usuarios. */
 final class AuthController
 {
     public function __construct(private UserModel $users)
@@ -17,10 +17,12 @@ final class AuthController
             $user = $this->users->findByEmail($email);
 
             if ($user && password_verify($password, $user['contrasena'])) {
+                session_regenerate_id(true);
                 $_SESSION['usuario'] = [
-                    'id' => $user['id_usuario'],
+                    'id' => (int)$user['id_usuario'],
                     'nombre' => $user['nombre'],
                     'correo' => $user['correo'],
+                    'tipo' => $user['tipo'],
                 ];
 
                 $destination = $_SESSION['redirect_url'] ?? 'index.php';
@@ -28,6 +30,7 @@ final class AuthController
                 header('Location: ' . $destination);
                 exit;
             }
+
             $error = 'Correo o contraseña incorrectos';
         }
 
@@ -39,6 +42,8 @@ final class AuthController
 
             if ($name === '' || $email === '' || $password === '') {
                 $error = 'Todos los campos son requeridos';
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $error = 'Escribe un correo válido';
             } elseif ($password !== $confirmation) {
                 $error = 'Las contraseñas no coinciden';
             } elseif (strlen($password) < 8) {

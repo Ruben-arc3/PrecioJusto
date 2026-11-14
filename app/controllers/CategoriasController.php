@@ -26,7 +26,7 @@ $sql = "SELECT p.*,
         LEFT JOIN tiendas t ON pt.id_tienda = t.id_tienda
         WHERE p.id_categoria = ? 
         AND p.nombre_producto LIKE ?
-        GROUP BY p.id_producto
+        GROUP BY p.id_producto, p.nombre_producto, p.Foto, p.marca, p.id_categoria
         ORDER BY $orden";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_categoria, "%$busqueda%"]);

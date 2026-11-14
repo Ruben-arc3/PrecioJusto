@@ -8,14 +8,17 @@
 <body class="bg-light">
 <div class="container mt-5">
     <h2>Nuevo Producto</h2>
+    <?php if (!empty($error)): ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></div>
+    <?php endif; ?>
     <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Nombre del Producto</label>
             <input type="text" name="nombre_producto" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label class="form-label">Precio</label>
-            <input type="number" name="precio" class="form-control" step="0.01" required>
+            <label class="form-label">Precio en la tienda seleccionada</label>
+            <input type="number" name="precio" class="form-control" min="0.01" step="0.01" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Marca</label>
@@ -23,14 +26,14 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Foto del Producto</label>
-            <input type="file" name="foto" class="form-control" accept="image/*" required>
+            <input type="file" name="foto" class="form-control" accept="image/jpeg,image/png,image/webp,image/gif" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Tienda</label>
             <select name="id_tienda" class="form-select" required>
                 <option value="">Selecciona una tienda</option>
                 <?php foreach ($tiendas as $tienda): ?>
-                    <option value="<?= $tienda['id_tienda'] ?>"><?= htmlspecialchars($tienda['nombre_tienda']) ?></option>
+                    <option value="<?= (int)$tienda['id_tienda'] ?>"><?= htmlspecialchars($tienda['nombre_tienda']) ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -39,7 +42,7 @@
             <select name="id_categoria" class="form-select" required>
                 <option value="">Selecciona una categoría</option>
                 <?php foreach ($categorias as $categoria): ?>
-                    <option value="<?= $categoria['id_categoria'] ?>"><?= htmlspecialchars($categoria['nombre_categoria']) ?></option>
+                    <option value="<?= (int)$categoria['id_categoria'] ?>"><?= htmlspecialchars($categoria['nombre_categoria']) ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

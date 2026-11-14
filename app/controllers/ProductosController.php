@@ -40,7 +40,7 @@ if (!empty($where)) {
 }
 
 // Agrupar por producto
-$sql .= " GROUP BY p.id_producto";
+$sql .= " GROUP BY p.id_producto, p.nombre_producto, p.Foto, p.marca";
 
 // Ordenamiento
 switch ($orden) {
@@ -67,7 +67,13 @@ switch ($orden) {
 }
 
 // Paginación
-$stmtTotal = $conn->prepare("SELECT COUNT(*) FROM (" . str_replace('p.id_producto, p.nombre_producto, p.Foto, p.marca, MIN(pt.precio) AS precio_minimo, GROUP_CONCAT(DISTINCT t.nombre_tienda SEPARATOR \', \') AS tiendas_disponibles', 'DISTINCT p.id_producto', $sql) . ") AS total");
+$sqlCount = 'SELECT COUNT(DISTINCT p.id_producto) '
+    . 'FROM productos p JOIN producto_tienda pt ON p.id_producto = pt.id_producto '
+    . 'JOIN tiendas t ON pt.id_tienda = t.id_tienda';
+if (!empty($where)) {
+    $sqlCount .= ' WHERE ' . implode(' AND ', $where);
+}
+$stmtTotal = $conn->prepare($sqlCount);
 $stmtTotal->execute($params);
 $totalProductos = $stmtTotal->fetchColumn();
 $totalPaginas = ceil($totalProductos / $porPagina);

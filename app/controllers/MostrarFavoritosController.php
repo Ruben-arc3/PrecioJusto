@@ -17,7 +17,7 @@ $sql = "SELECT p.id_producto, p.nombre_producto, p.Foto, p.marca,
         JOIN producto_tienda pt ON p.id_producto = pt.id_producto
         JOIN tiendas t ON pt.id_tienda = t.id_tienda
         WHERE f.id_usuario = ?
-        GROUP BY p.id_producto";
+        GROUP BY p.id_producto, p.nombre_producto, p.Foto, p.marca";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_usuario]);
 $favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -20,7 +20,7 @@ final class ProductModel
             'SELECT p.*, COALESCE(ROUND(AVG(v.puntuacion), 1), 0) AS promedio_valoracion, '
             . 'COUNT(v.id_valoracion) AS cantidad_valoraciones '
             . 'FROM productos p LEFT JOIN valoraciones v ON p.id_producto = v.id_producto '
-            . 'WHERE p.id_producto = :id GROUP BY p.id_producto'
+            . 'WHERE p.id_producto = :id GROUP BY p.id_producto, p.nombre_producto, p.Foto, p.marca, p.id_categoria'
         );
         $statement->execute(['id' => $id]);
         $product = $statement->fetch();

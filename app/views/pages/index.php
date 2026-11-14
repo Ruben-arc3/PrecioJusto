@@ -238,13 +238,7 @@
     <div class="container">
         <h2 class="text-center mb-5 fw-bold"><i class="fas fa-store-alt me-2"></i> Nuestras Tiendas</h2>
         
-        <?php
-        // Consulta para obtener todas las tiendas con sus URLs
-        $query_tiendas = "SELECT id_tienda, nombre_tienda, url FROM tiendas ORDER BY nombre_tienda";
-        $stmt_tiendas = $conn->prepare($query_tiendas);
-        $stmt_tiendas->execute();
-        $tiendas = $stmt_tiendas->fetchAll(PDO::FETCH_ASSOC);
-        ?>
+        
         
         <div class="row g-4">
             <?php foreach ($tiendas as $tienda): ?>
