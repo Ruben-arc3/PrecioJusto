@@ -78,6 +78,5 @@ $sql .= " LIMIT " . (($pagina - 1) * $porPagina) . ", $porPagina";
 $stmt = $conn->prepare($sql);
 $stmt->execute($params);
 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
 require __DIR__ . '/../views/pages/productos.php';

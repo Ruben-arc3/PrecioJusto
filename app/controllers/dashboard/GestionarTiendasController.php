@@ -9,6 +9,5 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'admin') {
 
 $stmt = $conn->query("SELECT * FROM tiendas");
 $tiendas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
 require __DIR__ . '/../../views/pages/dashboard/gestionar_tiendas.php';

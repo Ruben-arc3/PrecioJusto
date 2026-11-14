@@ -9,6 +9,5 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'admin') {
 
 $stmt = $conn->query("SELECT * FROM usuarios");
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
 require __DIR__ . '/../../views/pages/dashboard/gestionar_usuarios.php';

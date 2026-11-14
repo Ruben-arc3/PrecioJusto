@@ -40,6 +40,5 @@ if (move_uploaded_file($_FILES['foto']['tmp_name'], $rutaDestino)) {
     header("Location: gestionar_productos.php");
     exit;
 }
-?>
 
 require __DIR__ . '/../../views/pages/dashboard/crear_producto.php';

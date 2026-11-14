@@ -60,6 +60,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $stmt = $conn->prepare("SELECT nombre, correo FROM usuarios WHERE id_usuario = ?");
 $stmt->execute([$idUsuario]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-?>
 
 require __DIR__ . '/../views/pages/perfil.php';

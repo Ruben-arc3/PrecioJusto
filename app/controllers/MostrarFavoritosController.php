@@ -21,6 +21,5 @@ $sql = "SELECT p.id_producto, p.nombre_producto, p.Foto, p.marca,
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_usuario]);
 $favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
 require __DIR__ . '/../views/pages/mostrar_favoritos.php';

@@ -92,6 +92,5 @@ if (count($relacionados) < 6) {
     $stmtRandom->execute([$id_producto]);
     agregarProductos($relacionados, $stmtRandom->fetchAll(PDO::FETCH_ASSOC), $ids_agregados);
 }
-?>
 
 require __DIR__ . '/../views/pages/detalles.php';

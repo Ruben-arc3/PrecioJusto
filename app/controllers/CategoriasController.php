@@ -31,6 +31,5 @@ $sql = "SELECT p.*,
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_categoria, "%$busqueda%"]);
 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
 require __DIR__ . '/../views/pages/categorias.php';

@@ -54,6 +54,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: gestionar_productos.php");
     exit;
 }
-?>
 
 require __DIR__ . '/../../views/pages/dashboard/editar_producto.php';

@@ -1,3 +1,2 @@
-<?php session_start(); ?>
-
+<?php session_start();
 require __DIR__ . '/../../views/pages/dashboard/login.php';
